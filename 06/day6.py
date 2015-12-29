@@ -49,15 +49,16 @@ with open(infile, "r") as f:
         action, ll, ur = parse_line(line)
 
         if "turn on" in action:
-            status[ll[0]:ll[1], ur[0]:ur[1]] = 1# turn_on(status[ll[0]:ll[1], ur[0]:ur[1]])
+            status[ll[0]:ur[0], ll[1]:ur[1]] += 1# turn_on(status[ll[0]:ll[1], ur[0]:ur[1]])
         if "turn off" in action:
-            status[ll[0]:ll[1], ur[0]:ur[1]] = 0# turn_off(status[ll[0]:ll[1], ur[0]:ur[1]])
+            status[ll[0]:ur[0], ll[1]:ur[1]] -= 1# turn_off(status[ll[0]:ll[1], ur[0]:ur[1]])
+            status[status < 0] = 0
         if "toggle" in action:
-            status[ll[0]:ll[1], ur[0]:ur[1]] = toggle(status[ll[0]:ll[1], ur[0]:ur[1]])
+            status[ll[0]:ur[0], ll[1]:ur[1]] += 2 #toggle(status[ll[0]:ur[0], ll[1]:ur[1]])
 
 
-        #plt.contourf(status)
-        #plt.pause(0.0001)
+plt.contourf(status)
+plt.show()
 print np.sum(status)
 
 

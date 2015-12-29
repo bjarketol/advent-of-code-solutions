@@ -1,0 +1,14 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module calculate_presents ! in 
+    interface  ! in :calculate_presents
+        subroutine calculate_presents(house_no,target) ! in :calculate_presents:calculate_presents.f90
+            integer intent(out) :: house_no
+            integer intent(in) :: target
+        end subroutine calculate_presents
+    end interface 
+end python module calculate_presents
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
